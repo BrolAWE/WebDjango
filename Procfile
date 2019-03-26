@@ -1,0 +1,1 @@
+web: gunicorn herokuapp.wsgio --log-file -

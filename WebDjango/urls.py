@@ -19,6 +19,6 @@ from django.urls import path
 from univer.views import db
 
 urlpatterns = [
-path('db/', db),
+path('', db),
     path('admin/', admin.site.urls),
 ]
