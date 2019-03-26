@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from univer.views import db
+
 urlpatterns = [
+path('db/', db),
     path('admin/', admin.site.urls),
 ]
