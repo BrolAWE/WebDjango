@@ -5,4 +5,8 @@ from django.shortcuts import render
 # Create your views here.
 
 def db(request):
-    return HttpResponse('hello')
+    return HttpResponse('go')
+
+
+def stat(request):
+    return render(request, 'index.html')
