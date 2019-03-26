@@ -1,2 +1,4 @@
 **/.idea
 **/venvv
+*.bak
+*.sqlite3
