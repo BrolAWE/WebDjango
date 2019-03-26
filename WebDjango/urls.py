@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from univer.views import db, stat
+from univer.views import db, stat, postg
 
 urlpatterns = [
     path('', db),
     path('admin/', admin.site.urls),
-    path('index/', stat)
+    path('index/', stat),
+    path('db/', postg),
 ]
