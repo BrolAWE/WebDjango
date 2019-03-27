@@ -1,16 +1,12 @@
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 
 # Create your views here.
 from univer.models import Dostopr
 
 
-def db(request):
-    return HttpResponse('go')
-
-
 def stat(request):
-    return render(request, 'index.html')
+    return render_to_response('index.html')
 
 
 def postg(request):
