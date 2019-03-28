@@ -16,11 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from univer.views import stat, postg, jsdb
+from univer.views import stat, postg, jsdb, IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', stat),
+    path('', IndexView.as_view(), name='index'),
     path('db/', postg),
     path('jsdb/', jsdb),
 ]

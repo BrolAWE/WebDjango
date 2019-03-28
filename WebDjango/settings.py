@@ -115,6 +115,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/staticfiles/'
+REDIS_URL = os.getenv("REDIS_URL", "redis://127.0.0.1:6379/2")
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
