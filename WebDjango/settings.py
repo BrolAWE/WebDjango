@@ -114,11 +114,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/staticfiles/'
-REDIS_URL = os.getenv("REDIS_URL", "redis://127.0.0.1:6379/2")
+STATIC_URL = '/static/'
+REDIS_URL = os.getenv("REDIS_URL", "redis://h:p6272540077e0c17841dccd138494d0331773827568eb3cbcf1d7d4f74a1d32de@ec2-52-4-17-180.compute-1.amazonaws.com:23509")
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 django_heroku.settings(locals())

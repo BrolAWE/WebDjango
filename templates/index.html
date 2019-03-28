@@ -1,13 +1,32 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+    {% block styles %}{% endblock %}
+
+
+    <script type="text/javascript" src="{% static "jquery/jquery-3.3.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    {% block scripts %}{% endblock %}
+
 </head>
 <body>
 
-{% load static %}
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="{% static "bootstrap-solid.svg" %}" width="30" height="30" class="d-inline-block align-top" alt="">
+    Alexey Delov
+  </a>
+</nav>
+
+
 <img src="{% static "me.jpg" %}" width="800" height="800">
+
 <p>{{ counter }} views</p>
 
 </body>
