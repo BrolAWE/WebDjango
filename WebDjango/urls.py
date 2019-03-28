@@ -21,6 +21,6 @@ from univer.views import stat, postg, jsdb, IndexView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
-    path('db/', postg),
+    path('db/', postg, name='database'),
     path('jsdb/', jsdb),
 ]
