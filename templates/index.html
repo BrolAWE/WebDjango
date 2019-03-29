@@ -1,45 +1,20 @@
+{% extends "base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="{% static "me.jpg" %}">
+{% block title %}Homepage{% endblock %}
 
-    <title>Homepage</title>
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static "index.css" %}">
+{% endblock %}
 
-    <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
-    {% block styles %}{% endblock %}
-
-
-    <script type="text/javascript" src="{% static "jquery/jquery-3.3.1.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
-    {% block scripts %}{% endblock %}
-
-</head>
-<body>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
-  <a class="navbar-brand" href="{% url "index" %}">Alexey</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url "index" %}">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url "database" %}">Database</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-
-<img src="{% static "me.jpg" %}" width="500" height="500">
-
-<p>{{ counter }} views</p>
-
-</body>
-</html>
+{% block content %}
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            {% include "topic-list.html" %}
+        </div>
+        <div class="col-8"><img src="{% static "me.jpg" %}" width="500" height="500"></div>
+        <div class="col-2"><p>{{ counter }} views</p></div>
+    </div>
+    </div>
+{% endblock %}

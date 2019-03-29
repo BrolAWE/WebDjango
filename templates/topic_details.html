@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static "index.css" %}">
+{% endblock %}
+
+{% block content %}
+    <div class="topic-list__item">
+        <h5><a href="{% url "topic_details" topic.pk %}">{{ topic.title }}</a> </h5>
+        <p>{{ topic.body }}</p>
+        <a href="{% url "topic_details" topic.pk %}" class="btn btn-outline-primary">More...</a>
+    </div>
+{% endblock %}

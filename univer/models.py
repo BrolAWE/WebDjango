@@ -9,3 +9,8 @@ class Dostopr(models.Model):
     longitude = models.FloatField()
     latitude = models.FloatField()
     rate = models.FloatField()
+
+
+class Topic(models.Model):
+    title = models.CharField(max_length=255)
+    body = models.TextField()
