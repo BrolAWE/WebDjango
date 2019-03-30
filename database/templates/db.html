@@ -8,15 +8,21 @@
 {% endblock %}
 
 {% block content %}
-<table>
-{% for i in b %}
-    <tr class='success'>
-        <td>{{ i.id }}</td>
-        <td>{{ i.name }}</td>
-        <td>{{ i.longitude }}</td>
-        <td>{{ i.latitude }}</td>
-        <td>{{ i.rate }}</td>
-    </tr>
-{% endfor %}
-</table>
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <table>
+                {% for i in b %}
+                <tr class='success'>
+                <td>{{ i.id }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.longitude }}</td>
+                <td>{{ i.latitude }}</td>
+                <td>{{ i.rate }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    </div>
 {% endblock %}
