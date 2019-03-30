@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'univer',
     'chat',
-    'channels'
+    'channels',
+    'database'
 ]
 
 MIDDLEWARE = [

@@ -17,8 +17,9 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 from chat import views as chat_views
+from database.views import postg, jsdb
 
-from univer.views import stat, postg, jsdb, IndexView, topic_details
+from univer.views import IndexView, topic_details
 
 urlpatterns = [
     path('admin/', admin.site.urls),
