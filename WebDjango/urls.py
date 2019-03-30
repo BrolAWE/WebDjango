@@ -28,5 +28,4 @@ urlpatterns = [
     path('jsdb/', jsdb),
     url(r'^topic/(?P<pk>\d+)/$', topic_details, name="topic_details"),
     url(r'^chat/', include('chat.urls')),
-    url(r'^$', chat_views.index),
 ]
