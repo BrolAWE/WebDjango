@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from chat import views as chat_views
 
 from univer.views import stat, postg, jsdb, IndexView, topic_details
 
@@ -25,4 +26,6 @@ urlpatterns = [
     path('db/', postg, name='database'),
     path('jsdb/', jsdb),
     url(r'^topic/(?P<pk>\d+)/$', topic_details, name="topic_details"),
+    url(r'^chat/', include('chat.urls')),
+    url(r'^$', chat_views.index),
 ]
