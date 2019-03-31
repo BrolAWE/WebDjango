@@ -13,8 +13,61 @@
         <div class="col-2">
             {% include "topic-list.html" %}
         </div>
-        <div class="col-8"><img src="{% static "me.jpg" %}" width="500" height="500"></div>
-        <div class="col-2"><p>{{ counter }} views</p></div>
+        <div class="col-5">
+            <img src="{% static "me.jpg" %}" class="img-fluid" alt="Responsive image">
+            <p>{{ counter }} views</p>
+        </div>
+        <div class="col-5">
+            <div class="form-group">
+                <textarea id="chat-log" class="form-control" cols="100" rows="20" disabled></textarea><br/>
+                <input id="chat-message-input" type="text" class="form-control" size="100"/><br/>
+                <input id="chat-message-submit" type="button" class="btn btn-primary" value="Send"/>
+            </div>
+        </div>
     </div>
     </div>
+{% endblock %}
+
+{% block script%}
+        <script>
+    var roomName = 1;
+
+    var protocol = '';
+    if (window.location.protocol === 'https:') {
+        protocol = 'wss:';
+    } else {
+        protocol = 'ws:';
+    }
+
+    var chatSocket = new WebSocket(
+        protocol + '//' + window.location.host +
+        '/ws/chat/' + roomName + '/');
+
+    chatSocket.onmessage = function(e) {
+        var data = JSON.parse(e.data);
+        var message = data['message'];
+        document.querySelector('#chat-log').value += (message + '\n');
+    };
+
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector('#chat-message-input').focus();
+    document.querySelector('#chat-message-input').onkeyup = function(e) {
+        if (e.keyCode === 13) {  // enter, return
+            document.querySelector('#chat-message-submit').click();
+        }
+    };
+
+    document.querySelector('#chat-message-submit').onclick = function(e) {
+        var messageInputDom = document.querySelector('#chat-message-input');
+        var message = messageInputDom.value;
+        chatSocket.send(JSON.stringify({
+            'message': message
+        }));
+
+        messageInputDom.value = '';
+    };
+</script>
 {% endblock %}
