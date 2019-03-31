@@ -10,11 +10,15 @@
 {% block content %}
     <div class="container-fluid">
     <div class="row">
-        <div class="col">
-            <textarea id="chat-log" cols="100" rows="20"></textarea><br/>
-            <input id="chat-message-input" type="text" size="100"/><br/>
-            <input id="chat-message-submit" type="button" value="Send"/>
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="form-group">
+                <textarea id="chat-log" class="form-control" cols="100" rows="20" disabled></textarea><br/>
+                <input id="chat-message-input" type="text" class="form-control" size="100"/><br/>
+                <input id="chat-message-submit" type="button" class="btn btn-primary" value="Send"/>
+            </div>
         </div>
+        <div class="col-4"></div>
     </div>
     </div>
 {% endblock %}
