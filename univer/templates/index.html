@@ -10,14 +10,14 @@
 {% block content %}
     <div class="container-fluid">
     <div class="row">
-        <div class="col-2">
+        <div class="col-3">
             {% include "topic-list.html" %}
         </div>
         <div class="col-5">
             <img src="{% static "me.jpg" %}" class="img-fluid" alt="Responsive image">
             <p>{{ counter }} views</p>
         </div>
-        <div class="col-5">
+        <div class="col-4">
             <div class="form-group">
                 <textarea id="chat-log" class="form-control" cols="100" rows="20" disabled></textarea><br/>
                 <input id="chat-message-input" type="text" class="form-control" size="100"/><br/>
