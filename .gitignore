@@ -2,4 +2,3 @@
 **/venvv
 *.bak
 *.sqlite3
-*.env
