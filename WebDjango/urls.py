@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 from chat import views as chat_views
-from database.views import postg, jsdb
+from database.views import postg, jsdb, delete, add
 
 from univer.views import IndexView, topic_details
 
@@ -26,5 +26,7 @@ urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('db/', postg, name='database'),
     path('jsdb/', jsdb),
+    url(r'^delete/(?P<pk>\d+)/$', delete),
+    url(r'^add/(?P<name>\d+)/(?P<longitude>\d+)/(?P<latitude>\d+)/(?P<rate>\d+)/(?P<photo>\d+)/$', add),
     url(r'^topic/(?P<pk>\d+)/$', topic_details, name="topic_details"),
 ]
