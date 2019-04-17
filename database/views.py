@@ -1,4 +1,4 @@
-from django.http import JsonResponse, Http404, HttpResponse
+from django.http import JsonResponse, Http404, HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 
 # Create your views here.
@@ -17,7 +17,8 @@ def jsdb(request):
     return JsonResponse(list_result, safe=False)
 
 
-def delete(request, pk):
+def delete(request):
+    pk = request.GET.get("id", "")
     try:
         Dostopr.objects.get(pk=pk)
     except Dostopr.DoesNotExist:
@@ -26,6 +27,26 @@ def delete(request, pk):
     return HttpResponse('')
 
 
-def add(request, name, longitude, latitude, rate, photo):
+def add(request):
+    name = request.GET.get("name", "")
+    longitude = request.GET.get("longitude", "")
+    latitude = request.GET.get("latitude", "")
+    rate = request.GET.get("rate", "")
+    photo = request.GET.get("photo", "")
     Dostopr(name=name, longitude=longitude, latitude=latitude, rate=rate, photo=photo).save()
+    return HttpResponse('')
+
+
+def edit(request):
+    try:
+        pk = request.GET.get("id", "")
+        dostopr=Dostopr.objects.get(pk=pk)
+        dostopr.name = request.GET.get("name", "")
+        dostopr.longitude = request.GET.get("longitude", "")
+        dostopr.latitude = request.GET.get("latitude", "")
+        dostopr.rate = request.GET.get("rate", "")
+        dostopr.photo = request.GET.get("photo", "")
+        dostopr.save()
+    except Dostopr.DoesNotExist:
+        return HttpResponseNotFound("<h2>Dostopr not found</h2>")
     return HttpResponse('')
