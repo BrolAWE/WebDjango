@@ -13,7 +13,7 @@ def postg(request):
 
 def jsdb(request):
     sort = request.GET.get("sort", "")
-    b = Dostopr.objects.values().order_by("name","latitude","longitude","rate","photo")
+    b = Dostopr.objects.values().order_by("name")
     list_result = [entry for entry in b]
     return JsonResponse(list_result, safe=False)
 
