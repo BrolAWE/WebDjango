@@ -12,8 +12,31 @@ def postg(request):
 
 
 def jsdb(request):
-    sort = request.GET.get("sort", "")
-    b = Dostopr.objects.values().order_by(sort)
+
+    name = request.GET.get("name", "")
+    latitude = request.GET.get("latitude", "")
+    longitude = request.GET.get("longitude", "")
+    rate = request.GET.get("rate", "")
+    photo = request.GET.get("photo", "")
+    li = [name, latitude, longitude, rate, photo]
+    lis = []
+
+    for i in li:
+        if i != "":
+            lis.append(i)
+
+    if len(lis) == 0:
+        b = Dostopr.objects.values()
+    elif len(lis) == 1:
+        b = Dostopr.objects.values().order_by(lis[0])
+    elif len(lis) == 2:
+        b = Dostopr.objects.values().order_by(lis[0], lis[1])
+    elif len(lis) == 3:
+        b = Dostopr.objects.values().order_by(lis[0], lis[1], lis[0])
+    elif len(lis) == 4:
+        b = Dostopr.objects.values().order_by(lis[0], lis[1], lis[2], lis[3])
+    elif len(lis) == 5:
+        b = Dostopr.objects.values().order_by(lis[0], lis[1], lis[2], lis[3], lis[4])
     list_result = [entry for entry in b]
     return JsonResponse(list_result, safe=False)
 
@@ -41,7 +64,7 @@ def add(request):
 def edit(request):
     try:
         pk = request.GET.get("id", "")
-        dostopr=Dostopr.objects.get(pk=pk)
+        dostopr = Dostopr.objects.get(pk=pk)
         dostopr.name = request.GET.get("name", "")
         dostopr.longitude = request.GET.get("longitude", "")
         dostopr.latitude = request.GET.get("latitude", "")
