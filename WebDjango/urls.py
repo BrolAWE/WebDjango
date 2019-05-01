@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
     path('db/', postg, name='database'),
+    path('fizika/', postg, name='fizika'),
     path('jsdb/', jsdb),
     path('add/', add),
     path('delete/', delete),
