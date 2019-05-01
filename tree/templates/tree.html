@@ -9,9 +9,11 @@
     <div class="container-fluid">
     <div class="row">
         <div class="col-3">
-            <ul class="list-group">
+            <ul>
                 {% for worksop in workshops %}
-                <li class="list-group-item list-group-item-action">{{ worksop.name }}</li>
+                <li>
+                    {{ worksop.name }}
+                </li>
                 {% endfor %}
             </ul>
             </div>
