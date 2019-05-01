@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'chat',
     'channels',
     'database',
-    'fizika'
+    'fizika',
+    'tree'
 ]
 
 MIDDLEWARE = [
