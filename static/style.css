@@ -118,7 +118,7 @@ display:none
 
 .horizontal {
 border-top:#e6e9ed .063em solid;
-margin:1em;
+margin:1em auto;
 margin-top:0;
 width:50%
 }
