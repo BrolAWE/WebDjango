@@ -11,7 +11,18 @@
     <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <table>
+            <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Longitude</th>
+                    <th scope="col">Latitude</th>
+                    <th scope="col">Rate</th>
+                    <th scope="col">Photo</th>
+                </tr>
+            </thead>
+            <tbody>
                 {% for i in b %}
                 <tr class='success'>
                 <td>{{ i.id }}</td>
@@ -19,8 +30,10 @@
                 <td>{{ i.longitude }}</td>
                 <td>{{ i.latitude }}</td>
                 <td>{{ i.rate }}</td>
+                <td>{{ i.photo }}</td>
                 </tr>
                 {% endfor %}
+            </tbody>
             </table>
         </div>
     </div>
