@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from chat import views as chat_views
 from database.views import postg, jsdb, delete, add, edit
+from fizika.views import fizika1
 
 from univer.views import IndexView, topic_details
 
@@ -25,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
     path('db/', postg, name='database'),
-    path('fizika/', postg, name='fizika'),
+    path('fizika/', fizika1, name='fizika'),
     path('jsdb/', jsdb),
     path('add/', add),
     path('delete/', delete),

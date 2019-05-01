@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'univer',
     'chat',
     'channels',
-    'database'
+    'database',
+    'fizika'
 ]
 
 MIDDLEWARE = [

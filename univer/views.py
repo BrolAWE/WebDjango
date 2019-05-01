@@ -10,7 +10,7 @@ from univer.storage import counter
 
 def topic_details(request, pk):
     try:
-        topic=Topic.objects.get(pk=pk)
+        topic = Topic.objects.get(pk=pk)
     except Topic.DoesNotExist:
         raise Http404
     return render(request, 'topic_details.html', context={

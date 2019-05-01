@@ -7,7 +7,6 @@ from database.models import Dostopr
 
 def postg(request):
     b = Dostopr.objects.all()
-    print("hi")
     return render(request, "db.html", {"b": b})
 
 
