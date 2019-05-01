@@ -13,12 +13,9 @@ def postg(request):
 
 def jsdb(request):
 
-    name = request.GET.get("name", "")
-    latitude = request.GET.get("latitude", "")
-    longitude = request.GET.get("longitude", "")
-    rate = request.GET.get("rate", "")
-    photo = request.GET.get("photo", "")
-    li = [name, latitude, longitude, rate, photo]
+    first = request.GET.get("first", "")
+    second = request.GET.get("second", "")
+    li = [first, second]
     lis = []
 
     for i in li:
@@ -31,12 +28,6 @@ def jsdb(request):
         b = Dostopr.objects.values().order_by(lis[0])
     elif len(lis) == 2:
         b = Dostopr.objects.values().order_by(lis[0], lis[1])
-    elif len(lis) == 3:
-        b = Dostopr.objects.values().order_by(lis[0], lis[1], lis[0])
-    elif len(lis) == 4:
-        b = Dostopr.objects.values().order_by(lis[0], lis[1], lis[2], lis[3])
-    elif len(lis) == 5:
-        b = Dostopr.objects.values().order_by(lis[0], lis[1], lis[2], lis[3], lis[4])
     list_result = [entry for entry in b]
     return JsonResponse(list_result, safe=False)
 
