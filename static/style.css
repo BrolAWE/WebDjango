@@ -1,0 +1,149 @@
+﻿body,input,textarea {
+color:#434a54;
+font-family:"Open Sans",sans-serif;
+font-size:100%;
+font-weight:400;
+margin:0;
+padding:0;
+word-spacing:.1em
+}
+
+.menu a {
+cursor:pointer
+}
+
+.menu a:link {
+color:#434a54;
+text-decoration:none
+}
+
+.menu a:visited {
+color:#656d78
+}
+
+.menu a:active {
+color:#656d78
+}
+
+.menu ul,.menu ol {
+list-style-position:inside;
+margin-bottom:1em;
+margin-top:1em;
+padding:0 .75em
+}
+
+.menu ul ul,.menu ul ol,.menu ol ol,.menu ol ul {
+margin-bottom:0;
+margin-top:0;
+padding-left:0;
+padding-right:0
+}
+
+.menu li {
+line-height:150%
+}
+
+.menu a,.menu a:visited {
+color:#656d78;
+text-decoration:none
+}
+
+.menu .container {
+margin:0 auto;
+padding:0
+}
+
+.menu ul {
+list-style:none
+}
+
+.menu ul ul ul {
+padding-left:1em
+}
+
+.menu a {
+border-bottom:none;
+display:block;
+line-height:250%;
+padding:0 1.5em
+}
+
+.menu > ul > li > a {
+background-color:#f5f7fa
+}
+
+.menu li.open > a {
+color:#656d78
+}
+
+.menu > ul > li > ul > li:not(:last-child) {
+border-bottom:#e6e9ed .063em dashed
+}
+
+.menu > ul > li:not(.open) > ul > li:last-child {
+border-bottom:#e6e9ed .063em solid
+}
+
+.menu.vertical > ul > li > ul > li:last-child {
+border-bottom:#e6e9ed .063em solid
+}
+
+.menu ul li a:not(:only-child):before {
+content:"\f107";
+font-family:FontAwesome;
+margin-left:-1em;
+margin-right:4px
+}
+
+.menu ul li.open > a:not(:only-child):before {
+content:"\f106"
+}
+
+.menu.vertical {
+border-top:#e6e9ed .063em solid;
+margin:15px auto
+}
+
+.menu.vertical .container {
+background-color:#fff
+}
+
+.menu.vertical > ul > li > a {
+border-bottom:#e6e9ed .063em solid
+}
+
+.menu.close ul ul {
+display:none
+}
+
+.horizontal {
+border-top:#e6e9ed .063em solid;
+margin:15px auto;
+margin-top:0;
+width:50%
+}
+
+.menu.horizontal .container {
+background-color:#fff
+}
+
+.menu.horizontal > ul > li > a {
+border-bottom:#e6e9ed .063em solid
+}
+
+.menu.horizontal > ul > li > ul > li:last-child {
+border-bottom:#e6e9ed .063em solid
+}
+
+.clearfix:before,.clearfix:after {
+content:" ";
+display:table
+}
+
+.clearfix:after {
+clear:both
+}
+
+.clearfix {
+*zoom:1
+}

@@ -2,28 +2,97 @@
 {% load static %}
 
 {% block styles %}
-    <link rel="stylesheet" type="text/css" href="{% static "index.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static "index.js" %}"></script>
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid">
-    <div class="row">
-        <div class="col-3">
-            <ul class="list-group">
-                {% for worksop in workshops %}
-                <li class="list-group-item list-group-item-action">
-                    {{ worksop.name }}
-                </li>
-                {% endfor %}
-            </ul>
-            </div>
-        </div>
-        <div class="col-5">
+    <div class="menu horizontal close">
+		<ul class="container clearfix">
+			<li>
+				<a href="#">List items</a>
+				<ul>
+					<li>
+						<a href="#">List items</a>
+						<ul>
+							<li>
+								<a href="">Item</a>
+							</li>
+							<li>
+								<a href="">Item</a>
+							</li>
+							<li>
+								<a href="">Item</a>
+							</li>
+							<li>
+								<a href="">Item</a>
+							</li>
+							<li>
+								<a href="">Item</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">List items</a>
+						<ul>
+							<li>
+								<a href="">Item</a>
+							</li>
+							<li>
+								<a href="">Item</a>
+							</li>
+							<li>
+								<a href="">Item</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">List items</a>
+				<ul>
+					<li>
+						<a href="#">List items</a>
+						<ul>
+							<li>
+								<a href="">Item</a>
+							</li>
+							<li>
+								<a href="">Item</a>
+							</li>
+							<li>
+								<a href="">Item</a>
+							</li>
+							<li>
+								<a href="">Item</a>
+							</li>
+							<li>
+								<a href="">Item</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">List items</a>
+						<ul>
+							<li>
+								<a href="">Item</a>
+							</li>
+							<li>
+								<a href="">Item</a>
+							</li>
+							<li>
+								<a href="">Item</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+{% endblock %}
+{% block script %}
 
-        </div>
-        <div class="col-4">
-
-        </div>
-    </div>
-    </div>
 {% endblock %}
