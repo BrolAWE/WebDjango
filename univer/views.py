@@ -1,4 +1,4 @@
-from django.http import HttpResponse, JsonResponse, Http404
+from django.http import HttpResponse, JsonResponse, Http404, request
 from django.shortcuts import render, render_to_response
 
 # Create your views here.
@@ -21,8 +21,12 @@ def topic_details(request, pk):
 class IndexView(TemplateView):
     topics = Topic.objects.all()
     template_name = 'index.html'
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
     extra_context = {
-        'topics': topics}
+        'topics': topics,
+        'num_visits': num_visits,
+    }
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
