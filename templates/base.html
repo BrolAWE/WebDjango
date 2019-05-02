@@ -42,7 +42,7 @@
   </div>
   <ul class="nav justify-content-end">
       {% if user.is_authenticated %}
-            <li class="nav-item"><a class="navbar-text">User: {{ user.get_username }}</a></li>
+            <li class="nav-item"><a class="navbar-text" id="user">{{ user.get_username }}</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
       {% else %}
             <li class="nav-item"><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Login</a></li>

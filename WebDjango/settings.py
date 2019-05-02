@@ -132,11 +132,11 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [os.environ.get('REDIS_URL', 'redis://h:p6272540077e0c17841dccd138494d0331773827568eb3cbcf1d7d4f74a1d32de@ec2-52-4-17-180.compute-1.amazonaws.com:23509')],
+            "hosts": [os.environ.get('REDIS_URL', 'redis://h:p6272540077e0c17841dccd138494d0331773827568eb3cbcf1d7d4f74a1d32de@ec2-3-213-150-12.compute-1.amazonaws.com:20739')],
         },
     },
 }
-REDIS_URL = os.getenv("REDIS_URL", "redis://h:p6272540077e0c17841dccd138494d0331773827568eb3cbcf1d7d4f74a1d32de@ec2-52-4-17-180.compute-1.amazonaws.com:23509")
+REDIS_URL = os.getenv("REDIS_URL", "redis://h:p6272540077e0c17841dccd138494d0331773827568eb3cbcf1d7d4f74a1d32de@ec2-3-213-150-12.compute-1.amazonaws.com:20739")
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
