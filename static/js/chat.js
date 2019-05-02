@@ -1,31 +1,4 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block title %}Chat{% endblock %}
-
-{% block styles %}
-    <link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}">
-{% endblock %}
-
-{% block content %}
-    <div class="container-fluid">
-    <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4">
-            <div class="form-group">
-                <textarea id="chat-log" class="form-control" cols="100" rows="20" disabled></textarea><br/>
-                <input id="chat-message-input" type="text" class="form-control" size="100"/><br/>
-                <input id="chat-message-submit" type="button" class="btn btn-primary" value="Send"/>
-            </div>
-        </div>
-        <div class="col-4"></div>
-    </div>
-    </div>
-{% endblock %}
-
-{% block script %}
-    <script>
-    var roomName = {{ room_name_json }};
+    var roomName = 1;
 
     var protocol = '';
     if (window.location.protocol === 'https:') {
@@ -64,5 +37,3 @@
 
         messageInputDom.value = '';
     };
-</script>
-{% endblock %}

@@ -4,7 +4,7 @@
 {% block title %}Homepage{% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" type="text/css" href="{% static "index.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}">
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
             {% include "topic-list.html" %}
         </div>
         <div class="col-5">
-            <img src="{% static "me.jpg" %}" class="img-fluid" alt="Responsive image">
+            <img src="{% static "img/me.jpg" %}" class="img-fluid" alt="Responsive image">
             <p>{{ counter }} views</p>
         </div>
         <div class="col-4">
@@ -29,45 +29,5 @@
 {% endblock %}
 
 {% block script%}
-        <script>
-    var roomName = 1;
-
-    var protocol = '';
-    if (window.location.protocol === 'https:') {
-        protocol = 'wss:';
-    } else {
-        protocol = 'ws:';
-    }
-
-    var chatSocket = new WebSocket(
-        protocol + '//' + window.location.host +
-        '/ws/chat/' + roomName + '/');
-
-    chatSocket.onmessage = function(e) {
-        var data = JSON.parse(e.data);
-        var message = data['message'];
-        document.querySelector('#chat-log').value += (message + '\n');
-    };
-
-    chatSocket.onclose = function(e) {
-        console.error('Chat socket closed unexpectedly');
-    };
-
-    document.querySelector('#chat-message-input').focus();
-    document.querySelector('#chat-message-input').onkeyup = function(e) {
-        if (e.keyCode === 13) {  // enter, return
-            document.querySelector('#chat-message-submit').click();
-        }
-    };
-
-    document.querySelector('#chat-message-submit').onclick = function(e) {
-        var messageInputDom = document.querySelector('#chat-message-input');
-        var message = messageInputDom.value;
-        chatSocket.send(JSON.stringify({
-            'message': message
-        }));
-
-        messageInputDom.value = '';
-    };
-</script>
+    <script type="text/javascript" src="{% static "js/chat.js" %}"></script>
 {% endblock %}
