@@ -13,15 +13,17 @@ def topic_details(request, pk):
         topic = Topic.objects.get(pk=pk)
     except Topic.DoesNotExist:
         raise Http404
-    num_visits = request.session.get('num_visits', 0)
-    request.session['num_visits'] = num_visits + 1
     return render(request, 'topic_details.html', context={
         'topic': topic,
-        'num_visits': num_visits,
     })
 
 
 def index(request):
     topics = Topic.objects.all()
     cou = counter.inc()
-    return render(request, "index.html", {"topics": topics, "cou": cou})
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+    return render(request, "index.html", {"topics": topics,
+                                          "cou": cou,
+                                          'num_visits': num_visits
+                                          })

@@ -12,7 +12,6 @@
             <div class="topic-list__item">
                 <h5><a href="{% url "topic_details" topic.pk %}">{{ topic.title }}</a> </h5>
                 <p>{{ topic.body }}</p>
-                <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
             </div>
         </div>
     </div>
