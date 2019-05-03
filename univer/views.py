@@ -21,14 +21,7 @@ def topic_details(request, pk):
     })
 
 
-class IndexView(TemplateView):
+def index(request):
     topics = Topic.objects.all()
-    template_name = 'index.html'
-    extra_context = {
-        'topics': topics,
-    }
-
-    def get_context_data(self, **kwargs):
-        data = super().get_context_data(**kwargs)
-        data['counter'] = counter.inc()
-        return data
+    cou = counter.inc()
+    return render(request, "index.html", {"topics": topics, "cou": cou})
