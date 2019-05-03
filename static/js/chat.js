@@ -1,5 +1,3 @@
-var roomName = 1;
-
 var protocol = '';
 if (window.location.protocol === 'https:') {
     protocol = 'wss:';
@@ -9,13 +7,12 @@ if (window.location.protocol === 'https:') {
 
 var chatSocket = new WebSocket(
     protocol + '//' + window.location.host +
-    '/ws/chat/' + roomName + '/');
+    '/ws/chat/1/');
 
 chatSocket.onmessage = function(e) {
     var data = JSON.parse(e.data);
     var message = data['message'];
-    var user = document.querySelector("#user").innerHTML;
-    document.querySelector('#chat-log').value += (user+": "+message + '\n');
+    document.querySelector('#chat-log').value += (message + '\n');
 };
 
 chatSocket.onclose = function(e) {
@@ -32,9 +29,13 @@ document.querySelector('#chat-message-input').onkeyup = function(e) {
 document.querySelector('#chat-message-submit').onclick = function(e) {
     var messageInputDom = document.querySelector('#chat-message-input');
     var message = messageInputDom.value;
+    var userInputDom = document.querySelector('#chat-user-input');
+    var users = userInputDom.value;
+    var user = document.querySelector("#user").innerHTML;
     chatSocket.send(JSON.stringify({
-        'message': message
+        'message': users+": "+message
     }));
 
     messageInputDom.value = '';
+    userInputDom.value = '';
 };
