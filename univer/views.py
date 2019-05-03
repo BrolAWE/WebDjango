@@ -27,3 +27,4 @@ def index(request):
                                           "cou": cou,
                                           'num_visits': num_visits
                                           })
+
