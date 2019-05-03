@@ -21,7 +21,7 @@ from database.views import postg, jsdb, delete, add, edit
 from fizika.views import fizika1
 from tree.views import tree
 
-from univer.views import IndexView, topic_details, index
+from univer.views import topic_details, index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
