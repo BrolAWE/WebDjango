@@ -16,7 +16,6 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
-from chat import views as chat_views
 from database.views import postg, jsdb, delete, add, edit
 from fizika.views import fizika1
 from tree.views import tree
