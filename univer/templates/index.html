@@ -9,17 +9,17 @@
 
 {% block content %}
     <div class="container-fluid">
-    <div class="row">
-        <div class="col-3">
-            {% include "topic-list.html" %}
+        <div class="row">
+            <div class="col-3">
+                {% include "topic-list.html" %}
+            </div>
+            <div class="col-5">
+                {% include "main.html" %}
+            </div>
+            <div class="col-4">
+                {% include "chat.html" %}
+            </div>
         </div>
-        <div class="col-5">
-            {% include "main.html" %}
-        </div>
-        <div class="col-4">
-            {% include "chat.html" %}
-        </div>
-    </div>
     </div>
 {% endblock %}
 
