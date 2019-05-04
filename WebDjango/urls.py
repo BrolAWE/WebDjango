@@ -17,8 +17,6 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 from database.views import postg, jsdb, delete, add, edit
-from fizika.views import fizika1
-from tree.views import tree
 
 from univer.views import topic_details, index
 
@@ -26,8 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('db/', postg, name='database'),
-    path('fizika/', fizika1, name='fizika'),
-    path('tree/', tree, name='tree'),
     path('jsdb/', jsdb),
     path('add/', add),
     path('delete/', delete),

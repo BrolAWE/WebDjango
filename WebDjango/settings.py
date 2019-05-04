@@ -47,8 +47,6 @@ INSTALLED_APPS = [
     'univer',
     'channels',
     'database',
-    'fizika',
-    'tree'
 ]
 
 MIDDLEWARE = [
