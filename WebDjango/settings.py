@@ -31,10 +31,6 @@ ALLOWED_HOSTS = ['*']
 
 SESSION_SAVE_EVERY_REQUEST = True
 
-LOGIN_REDIRECT_URL = '/'
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -141,3 +137,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 django_heroku.settings(locals())
+
+LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
