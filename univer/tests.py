@@ -8,9 +8,3 @@ class ViewTest(TestCase):
         c = Client()
         response = c.get('/')
         self.assertEqual(response.status_code, 200)
-
-        response = c.get('/chat/')
-        self.assertEqual(response.status_code, 200)
-
-        response = c.get('/chat/lobby/')
-        self.assertEqual(response.status_code, 200)
