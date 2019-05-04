@@ -1,6 +1,6 @@
 <div class="topic-list">
     {% for topic in topics %}
-    <div class="topic-list__item border border-primary rounded" >
+    <div class="topic-list__item" >
         <h5><a href="{% url "topic_details" topic.pk %}">{{ topic.title }}</a> </h5>
         <p>{{ topic.body }}</p>
         <a href="{% url "topic_details" topic.pk %}" class="btn btn-outline-primary">More...</a>
