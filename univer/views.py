@@ -2,7 +2,6 @@ from django.http import HttpResponse, JsonResponse, Http404
 from django.shortcuts import render, render_to_response
 
 # Create your views here.
-from django.views.generic import TemplateView
 
 from univer.models import Topic
 from univer.storage import counter
