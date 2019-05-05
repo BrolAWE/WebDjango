@@ -2,9 +2,9 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-    <div>
+    <div class="container row justify-content-center">
         {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
+            <p>Your username and password didn't match. Please try again.</p>
         {% endif %}
 
         {% if next %}
@@ -13,24 +13,19 @@
             please login with an account that has access.</p>
 
         {% else %}
-            <p>Please login to see this page.</p>
+            <form class="form-signin" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         {% endif %}
+
         {% endif %}
-        <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>{{ form.username|as_crispy_field }}</td>
-            </tr>
-            <tr>
-                <td>{{ form.password|as_crispy_field }}</td>
-            </tr>
-        </table>
-        <button type="submit" class="btn btn-success">Login</button>
-        <input type="hidden" name="next" value="{{ next }}" />
-        </form>
-        {# Assumes you setup the password_reset view in your URLconf #}
-        <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+                {{ form.username|as_crispy_field }}
+                {{ form.password|as_crispy_field }}
+                <button type="submit" class="btn btn-success">Login</button>
+                <input type="hidden" name="next" value="{{ next }}" />
+                {# Assumes you setup the password_reset view in your URLconf #}
+                <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+            </form>
     </div>
 
 {% endblock %}
