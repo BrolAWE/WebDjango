@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'univer',
     'channels',
     'database',
-    'crispy_forms'
+    'crispy_forms',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
