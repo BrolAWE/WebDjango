@@ -1,5 +1,3 @@
-**/.idea
-**/venvv
-*.bak
-*.sqlite3
-*.env
+.idea/
+venvv/
+.env
