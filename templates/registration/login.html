@@ -2,30 +2,32 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-    <div class="container row justify-content-center">
-        {% if form.errors %}
-            <p>Your username and password didn't match. Please try again.</p>
-        {% endif %}
+    <div class="container">
+        <div class="row justify-content-center">
+            {% if form.errors %}
+                <p>Your username and password didn't match. Please try again.</p>
+            {% endif %}
 
-        {% if next %}
-        {% if user.is_authenticated %}
-            <p>Your account doesn't have access to this page. To proceed,
-            please login with an account that has access.</p>
+            {% if next %}
+            {% if user.is_authenticated %}
+                <p>Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.</p>
 
-        {% else %}
-            <form class="form-signin" method="post" action="{% url 'login' %}">
-            {% csrf_token %}
-                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        {% endif %}
+            {% else %}
+                <form class="form-signin" method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            {% endif %}
 
-        {% endif %}
-                {{ form.username|as_crispy_field }}
-                {{ form.password|as_crispy_field }}
-                <button type="submit" class="btn btn-success">Login</button>
-                <input type="hidden" name="next" value="{{ next }}" />
-                {# Assumes you setup the password_reset view in your URLconf #}
-                <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-            </form>
+            {% endif %}
+                    {{ form.username|as_crispy_field }}
+                    {{ form.password|as_crispy_field }}
+                    <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    {# Assumes you setup the password_reset view in your URLconf #}
+                    <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+                </form>
+        </div>
     </div>
 
 {% endblock %}
