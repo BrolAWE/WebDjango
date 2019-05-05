@@ -10,6 +10,7 @@ constantly==15.1.0
 daphne==2.3.0
 dj-database-url==0.5.0
 Django==2.2.1
+django-crispy-forms==1.7.2
 django-heroku==0.3.1
 hiredis==1.0.0
 hyperlink==19.0.0
