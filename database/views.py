@@ -13,6 +13,8 @@ def postg(request):
 def jsdb(request):
     first = request.GET.get("first", "")
     second = request.GET.get("second", "")
+    search = request.GET.get("search", "")
+    howsearch = request.GET.get("howsearch", "")
     li = [first, second]
     lis = []
 
@@ -21,11 +23,21 @@ def jsdb(request):
             lis.append(i)
 
     if len(lis) == 0:
-        b = Dostopr.objects.values()
+        if search != "":
+            b = Dostopr.objects.values().eval("qs.filter(Q({}__contains={})".format(search, howsearch))
+        else:
+            b = Dostopr.objects.values()
     elif len(lis) == 1:
-        b = Dostopr.objects.values().order_by(lis[0])
+        if search != "":
+            b = Dostopr.objects.values().order_by(lis[0]).eval("qs.filter(Q({}__contains={})".format(search, howsearch))
+        else:
+            b = Dostopr.objects.values().order_by(lis[0])
     elif len(lis) == 2:
-        b = Dostopr.objects.values().order_by(lis[0], lis[1])
+        if search != "":
+            b = Dostopr.objects.values().order_by(lis[0], lis[1]).eval(
+                "qs.filter(Q({}__contains={})".format(search, howsearch))
+        else:
+            b = Dostopr.objects.values().order_by(lis[0], lis[1])
     list_result = [entry for entry in b]
     return JsonResponse(list_result, safe=False)
 
