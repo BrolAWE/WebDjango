@@ -23,19 +23,19 @@ def jsdb(request):
             lis.append(i)
 
     if len(lis) == 0:
-        if search != "":
-            b = Dostopr.objects.values().eval("qs.filter(Q({}__contains={})".format(search, howsearch))
+        if howsearch != "":
+            b = Dostopr.objects.values().eval("qs.filter(Q({}__contains={})".format(howsearch, search))
         else:
             b = Dostopr.objects.values()
     elif len(lis) == 1:
-        if search != "":
-            b = Dostopr.objects.values().order_by(lis[0]).eval("qs.filter(Q({}__contains={})".format(search, howsearch))
+        if howsearch != "":
+            b = Dostopr.objects.values().order_by(lis[0]).eval("qs.filter(Q({}__contains={})".format(howsearch, search))
         else:
             b = Dostopr.objects.values().order_by(lis[0])
     elif len(lis) == 2:
-        if search != "":
+        if howsearch != "":
             b = Dostopr.objects.values().order_by(lis[0], lis[1]).eval(
-                "qs.filter(Q({}__contains={})".format(search, howsearch))
+                "qs.filter(Q({}__contains={})".format(howsearch, search))
         else:
             b = Dostopr.objects.values().order_by(lis[0], lis[1])
     list_result = [entry for entry in b]
