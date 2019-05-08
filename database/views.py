@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import JsonResponse, Http404, HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 
@@ -24,18 +25,17 @@ def jsdb(request):
 
     if len(lis) == 0:
         if howsearch != "":
-            b = Dostopr.objects.values().eval("qs.filter(Q({}__contains={})".format(howsearch, search))
+            b = Dostopr.objects.values().filter(Q(**{'{0}__contains'.format(howsearch): search}))
         else:
             b = Dostopr.objects.values()
     elif len(lis) == 1:
         if howsearch != "":
-            b = Dostopr.objects.values().order_by(lis[0]).eval("qs.filter(Q({}__contains={})".format(howsearch, search))
+            b = Dostopr.objects.values().order_by(lis[0]).filter(Q(**{'{0}__contains'.format(howsearch): search}))
         else:
             b = Dostopr.objects.values().order_by(lis[0])
     elif len(lis) == 2:
         if howsearch != "":
-            b = Dostopr.objects.values().order_by(lis[0], lis[1]).eval(
-                "qs.filter(Q({}__contains={})".format(howsearch, search))
+            b = Dostopr.objects.values().filter(Q(**{'{0}__contains'.format(howsearch): search}))
         else:
             b = Dostopr.objects.values().order_by(lis[0], lis[1])
     list_result = [entry for entry in b]
