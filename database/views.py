@@ -67,8 +67,8 @@ def edit(request):
 
 def inbase(request):
     try:
-        pk = int(request.GET.get("id", ""))
-        dos=Dostopr.objects.get(pk=pk)
+        pk = int(request.GET.get("pk", ""))
+        dos = Dostopr.objects.get(pk=pk)
     except Dostopr.DoesNotExist:
         return "NoOK"
     return "OK"
