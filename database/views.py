@@ -11,7 +11,6 @@ def postg(request):
 
 
 def jsdb(request):
-
     first = request.GET.get("first", "")
     second = request.GET.get("second", "")
     li = [first, second]
@@ -62,5 +61,13 @@ def edit(request):
         dostopr.photo = request.GET.get("photo", "")
         dostopr.save()
     except Dostopr.DoesNotExist:
-        return HttpResponseNotFound("<h2>Dostopr not found</h2>")
+        raise Http404
     return HttpResponse('')
+
+
+def inbase(request, pk):
+    try:
+        Dostopr.objects.get(pk=pk)
+    except Dostopr.DoesNotExist:
+        return "NoOK"
+    return "OK"
