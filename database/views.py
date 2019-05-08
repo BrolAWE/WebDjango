@@ -65,7 +65,7 @@ def edit(request):
     return HttpResponse('')
 
 
-def inbase(request, pk):
+def inbase(request):
     try:
         pk = request.GET.get("id", "")
         Dostopr.objects.get(pk=pk)
