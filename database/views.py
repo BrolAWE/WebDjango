@@ -14,8 +14,10 @@ def postg(request):
 def jsdb(request):
     first = request.GET.get("first", "")
     second = request.GET.get("second", "")
-    search = request.GET.get("search", "")
-    howsearch = request.GET.get("howsearch", "")
+    firstsearch = request.GET.get("firstsearch", "")
+    howfirstsearch = request.GET.get("howfirstsearch", "")
+    secondsearch = request.GET.get("secodnsearch", "")
+    howsecondsearch = request.GET.get("howsecondsearch", "")
     li = [first, second]
     lis = []
 
@@ -24,18 +26,30 @@ def jsdb(request):
             lis.append(i)
 
     if len(lis) == 0:
-        if howsearch != "":
-            b = Dostopr.objects.values().filter(Q(**{'{0}__contains'.format(howsearch): search}))
+        if howfirstsearch != "":
+            if howsecondsearch != "":
+                b = Dostopr.objects.values().filter(Q(**{'{0}__contains'.format(howfirstsearch): firstsearch}))
+            else:
+                b = Dostopr.objects.values().filter(Q(**{'{0}__contains'.format(howfirstsearch): firstsearch}),
+                                                    Q(**{'{0}__contains'.format(howsecondsearch): secondsearch}))
         else:
             b = Dostopr.objects.values()
     elif len(lis) == 1:
-        if howsearch != "":
-            b = Dostopr.objects.values().order_by(lis[0]).filter(Q(**{'{0}__contains'.format(howsearch): search}))
+        if howfirstsearch != "":
+            if howsecondsearch != "":
+                b = Dostopr.objects.values().filter(Q(**{'{0}__contains'.format(howfirstsearch): firstsearch}))
+            else:
+                b = Dostopr.objects.values().filter(Q(**{'{0}__contains'.format(howfirstsearch): firstsearch}),
+                                                    Q(**{'{0}__contains'.format(howsecondsearch): secondsearch}))
         else:
             b = Dostopr.objects.values().order_by(lis[0])
     elif len(lis) == 2:
-        if howsearch != "":
-            b = Dostopr.objects.values().filter(Q(**{'{0}__contains'.format(howsearch): search}))
+        if howfirstsearch != "":
+            if howsecondsearch != "":
+                b = Dostopr.objects.values().filter(Q(**{'{0}__contains'.format(howfirstsearch): firstsearch}))
+            else:
+                b = Dostopr.objects.values().filter(Q(**{'{0}__contains'.format(howfirstsearch): firstsearch}),
+                                                    Q(**{'{0}__contains'.format(howsecondsearch): secondsearch}))
         else:
             b = Dostopr.objects.values().order_by(lis[0], lis[1])
     list_result = [entry for entry in b]
