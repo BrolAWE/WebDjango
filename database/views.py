@@ -16,7 +16,7 @@ def jsdb(request):
     second = request.GET.get("second", "")
     firstsearch = request.GET.get("firstsearch", "")
     howfirstsearch = request.GET.get("howfirstsearch", "")
-    secondsearch = request.GET.get("secodnsearch", "")
+    secondsearch = request.GET.get("secondsearch", "")
     howsecondsearch = request.GET.get("howsecondsearch", "")
     li = [first, second]
     lis = []
