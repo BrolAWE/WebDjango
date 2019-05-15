@@ -28,27 +28,27 @@ def jsdb(request):
     if len(lis) == 0:
         if howfirstsearch != "":
             if howsecondsearch == "":
-                b = Dostopr.objects.values().get(Q(**{'{0}__iexact'.format(howfirstsearch): firstsearch}))
+                b = Dostopr.objects.values().filter(Q(**{'{0}__iexact'.format(howfirstsearch): firstsearch}))
             else:
-                b = Dostopr.objects.values().get(Q(**{'{0}__iexact'.format(howfirstsearch): firstsearch}),
+                b = Dostopr.objects.values().filter(Q(**{'{0}__iexact'.format(howfirstsearch): firstsearch}),
                                                     Q(**{'{0}__iexact'.format(howsecondsearch): secondsearch}))
         else:
             b = Dostopr.objects.values()
     elif len(lis) == 1:
         if howfirstsearch != "":
             if howsecondsearch == "":
-                b = Dostopr.objects.values().get(Q(**{'{0}__iexact'.format(howfirstsearch): firstsearch}))
+                b = Dostopr.objects.values().filter(Q(**{'{0}__iexact'.format(howfirstsearch): firstsearch}))
             else:
-                b = Dostopr.objects.values().get(Q(**{'{0}__iexact'.format(howfirstsearch): firstsearch}),
+                b = Dostopr.objects.values().filter(Q(**{'{0}__iexact'.format(howfirstsearch): firstsearch}),
                                                     Q(**{'{0}__iexact'.format(howsecondsearch): secondsearch}))
         else:
             b = Dostopr.objects.values().order_by(lis[0])
     elif len(lis) == 2:
         if howfirstsearch != "":
             if howsecondsearch == "":
-                b = Dostopr.objects.values().get(Q(**{'{0}__iexact'.format(howfirstsearch): firstsearch}))
+                b = Dostopr.objects.values().filter(Q(**{'{0}__iexact'.format(howfirstsearch): firstsearch}))
             else:
-                b = Dostopr.objects.values().get(Q(**{'{0}__iexact'.format(howfirstsearch): firstsearch}),
+                b = Dostopr.objects.values().filter(Q(**{'{0}__iexact'.format(howfirstsearch): firstsearch}),
                                                     Q(**{'{0}__iexact'.format(howsecondsearch): secondsearch}))
         else:
             b = Dostopr.objects.values().order_by(lis[0], lis[1])
