@@ -20,6 +20,9 @@ def jsdb(request):
     howfirstsearch = request.GET.get("howfirstsearch", "")
     secondsearch = request.GET.get("secondsearch", "")
     howsecondsearch = request.GET.get("howsecondsearch", "")
+    interval = request.GET.get("interval", "")
+    down = request.GET.get("down", "")
+    up = request.GET.get("up", "")
     li = [first, second]
     lis = []
 
@@ -54,6 +57,8 @@ def jsdb(request):
                                                     Q(**{'{0}__contains'.format(howsecondsearch): secondsearch}))
         else:
             b = Dostopr.objects.values().order_by(lis[0], lis[1])
+    if interval != "":
+        b = Dostopr.objects.values().filter(Q(**{'{0}__contains'.format(down, up): interval}))
     list_result = [entry for entry in b]
     return JsonResponse(list_result, safe=False)
 
