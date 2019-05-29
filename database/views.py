@@ -1,6 +1,8 @@
+from django.db import connection
 from django.db.models import Q
 from django.http import JsonResponse, Http404, HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
+from django import db
 
 # Create your views here.
 from database.models import Dostopr
