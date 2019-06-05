@@ -1,5 +1,5 @@
 from django.db import connection
-from django.db.models import Q
+from django.db.models import Q, Max, Min
 from django.http import JsonResponse, Http404, HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 from django import db
@@ -62,13 +62,13 @@ def jsdb(request):
             n = float(down)
             b = Dostopr.objects.values().filter(Q(**{'{0}__range'.format(interval): (down, up)}))
         except ValueError:
-            down=0
+            down=Dostopr.objects.all().values().aggregate(Min(interval))
             b = Dostopr.objects.values().filter(Q(**{'{0}__range'.format(interval): (down, up)}))
         try:
             n = float(up)
             b = Dostopr.objects.values().filter(Q(**{'{0}__range'.format(interval): (down, up)}))
         except ValueError:
-            up=10
+            up=Dostopr.objects.all().values().aggregate(Max(interval))
             b = Dostopr.objects.values().filter(Q(**{'{0}__range'.format(interval): (down, up)}))
     list_result = [entry for entry in b]
     return JsonResponse(list_result, safe=False)
