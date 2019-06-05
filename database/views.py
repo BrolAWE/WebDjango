@@ -62,13 +62,13 @@ def jsdb(request):
             n = float(down)
             b = Dostopr.objects.values().filter(Q(**{'{0}__range'.format(interval): (down, up)}))
         except ValueError:
-            down=Dostopr.objects.all().aggregate(Min(interval))[0].interval
+            down=Dostopr.objects.order_by('-'+interval)[0].interval
             b = Dostopr.objects.values().filter(Q(**{'{0}__range'.format(interval): (down, up)}))
         try:
             n = float(up)
             b = Dostopr.objects.values().filter(Q(**{'{0}__range'.format(interval): (down, up)}))
         except ValueError:
-            up=Dostopr.objects.all().aggregate(Max(interval))[0].interval
+            up=Dostopr.objects.order_by(interval)[0].interval
             b = Dostopr.objects.values().filter(Q(**{'{0}__range'.format(interval): (down, up)}))
     list_result = [entry for entry in b]
     return JsonResponse(list_result, safe=False)
