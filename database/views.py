@@ -58,7 +58,7 @@ def jsdb(request):
         else:
             b = Dostopr.objects.values().order_by(lis[0], lis[1])
     if interval != "":
-        up=Dostopr.objects.aggregate(Max('rate')).values()
+        up=Dostopr.objects.aggregate(Max('rate'))['rate__max']
         b = Dostopr.objects.values().filter(Q(**{'{0}__range'.format(interval): (down, up)}))
     list_result = [entry for entry in b]
     return JsonResponse(list_result, safe=False)
