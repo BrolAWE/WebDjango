@@ -58,20 +58,7 @@ def jsdb(request):
         else:
             b = Dostopr.objects.values().order_by(lis[0], lis[1])
     if interval != "":
-        try:
-            n = float(down)
-            b = Dostopr.objects.values().filter(Q(**{'{0}__range'.format(interval): (down, up)}))
-        except ValueError:
-            down=Dostopr.objects.order_by('-'+interval)
-            down=down[0].interval
-            b = Dostopr.objects.values().filter(Q(**{'{0}__range'.format(interval): (down, up)}))
-        try:
-            n = float(up)
-            b = Dostopr.objects.values().filter(Q(**{'{0}__range'.format(interval): (down, up)}))
-        except ValueError:
-            up=Dostopr.objects.order_by(interval)
-            up=up[0].interval
-            b = Dostopr.objects.values().filter(Q(**{'{0}__range'.format(interval): (down, up)}))
+        b = Dostopr.objects.values().filter(Q(**{'{0}__range'.format(interval): (down, up)}))
     list_result = [entry for entry in b]
     return JsonResponse(list_result, safe=False)
 
