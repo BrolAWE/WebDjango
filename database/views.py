@@ -58,9 +58,9 @@ def jsdb(request):
         else:
             b = Dostopr.objects.values().order_by(lis[0], lis[1])
     if interval != "":
-        if not up.isdigit():
+        if not up.isnumeric():
             up = Dostopr.objects.aggregate(Max(interval))[interval + '__max']
-        if not down.isdigit():
+        if not down.isnumeric():
             down = Dostopr.objects.aggregate(Min(interval))[interval + '__min']
         b = Dostopr.objects.values().filter(Q(**{'{0}__range'.format(interval): (down, up)}))
     list_result = [entry for entry in b]
