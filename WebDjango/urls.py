@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
-from database.views import postg, jsdb, delete, add, edit, inbase
+from database.views import postg, jsdb, delete, add, edit, inbase, mpro1
 
 from univer.views import topic_details, index
 
@@ -29,6 +29,7 @@ urlpatterns = [
     path('delete/', delete),
     path('edit/', edit),
     path('inbase/', inbase),
+    path('mpro1/', mpro1),
     url(r'^topic/(?P<pk>\d+)/$', topic_details, name="topic_details"),
 ]
 

@@ -109,3 +109,16 @@ def inbase(request):
     except Dostopr.DoesNotExist:
         return HttpResponse("NoOK")
     return HttpResponse("OK")
+
+
+def mpro1(request):
+    a = [float(i) for i in request.GET.get("a", "").split()]
+    b = [float(i) for i in request.GET.get("b", "").split()]
+    if a[0] > a[1] or len(a) != 2 or b[0] > b[1] or len(b) != 2:
+        return HttpResponse("Error")
+    if a[0] >= b[0] and a[1] <= b[1]:
+        return HttpResponse("pervlvovt")
+    elif b[0] >= a[0] and b[1] <= a[1]:
+        return HttpResponse("vtorvlvperv")
+    else:
+        return HttpResponse("nevl")
