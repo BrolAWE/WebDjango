@@ -127,7 +127,7 @@ def mpro1(request):
 def mpro2(request):
     f = []
     c = True
-    a = int(input())
+    a = int(request.GET.get("a", ""))
     if a <= 0:
         return HttpResponse("Error")
     while c:
@@ -143,3 +143,47 @@ def mpro2(request):
                 a = int(a / i)
                 break
     return HttpResponse(str(f[0]))
+
+
+def mpro3(request):
+    import math
+    f = []
+    z = []
+    a = int(request.GET.get("a", ""))
+    if a <= 0:
+        return HttpResponse("Error")
+    for i in range(int(math.pow(10, a - 1)), int(9 * math.pow(10, a - 1) + 1)):
+        if math.sqrt(i) % 1 == 0:
+            f.append(i)
+    for i in f:
+        if str(i)[len(str(i)) - 1] == str(i)[len(str(i)) - 2]:
+            z.append(i)
+    return HttpResponse(z[len(z) - 1])
+
+
+def mpro4(request):
+    import random
+    L = []
+    S = 0
+    K = 0
+    for i in range(10):
+        s = random.randint(10, 99)
+        L.append(s)
+        S += s
+    S = S / 10
+    L.sort()
+    if S - L[0] > L[len(L) - 1] - S:
+        return HttpResponse(str(L[0]))
+    else:
+        return HttpResponse(str(L[len(L) - 1]))
+
+
+def mpro5(request):
+    S = []
+    a = int(request.GET.get("a", ""))
+    if a <= 0 or a > 10:
+        return HttpResponse("Error")
+    for i in range(10, 100):
+        if i % 9 == 0 or str(i)[1] == '5':
+            S.append(i)
+    return HttpResponse(str(S[a - 1]))
