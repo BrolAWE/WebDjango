@@ -122,3 +122,24 @@ def mpro1(request):
         return HttpResponse("vtorvlvperv")
     else:
         return HttpResponse("nevl")
+
+
+def mpro2(request):
+    f = []
+    c = True
+    a = int(input())
+    if a <= 0:
+        return HttpResponse("Error")
+    while c:
+        if a == 1:
+            f.append(a)
+            break
+        for i in range(2, a + 1):
+            if i == a:
+                f.append(i)
+                c = False
+            elif a % i == 0:
+                f.append(i)
+                a = int(a / i)
+                break
+    return HttpResponse(str(f[0]))
