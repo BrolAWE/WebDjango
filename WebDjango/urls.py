@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from core.univer_views import postg, jsdb, delete, add, edit, inbase, mpro1, mpro2, mpro3, mpro4, mpro5
 
-from core.views import topic_details, index
+from core.views import topic_details, index, certificate, certificates
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+    path('certificates/', certificates, name='certificates'),
+    path('certificate/<pk>', certificate, name='certificate'),
     path('db/', postg, name='database'),
     path('jsdb/', jsdb),
     path('add/', add),

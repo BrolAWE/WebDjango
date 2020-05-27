@@ -1,0 +1,20 @@
+{% extends "base_parts/base.html" %}
+{% load static %}
+
+{% block title %}Sertificats{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}">
+{% endblock %}
+
+{% block content %}
+    <div class="card-columns">
+        {% for certificate in certificates %}
+            <div class="card">
+            <a href="{% url "certificate" certificate.pk %}">
+                <img src="{{ certificate.image.url }}" class="card-img-top" alt="{{ certificate.image.url }}">
+            </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

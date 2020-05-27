@@ -1,4 +1,5 @@
 from django.db import models
+import cloudinary.models
 
 
 # Create your models here.
@@ -15,3 +16,7 @@ class Dostopr(models.Model):
     rate = models.FloatField()
     photo = models.CharField(max_length=100)
     url = models.CharField(max_length=200, default="null")
+
+
+class Sertificat(models.Model):
+    image = cloudinary.models.CloudinaryField('Сертификат')

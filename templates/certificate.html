@@ -1,0 +1,12 @@
+{% extends "base_parts/base.html" %}
+{% load static %}
+
+{% block title %}Sertificats{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}">
+{% endblock %}
+
+{% block content %}
+    <img src="{{ certificate.image.url }}" class="img-fluid" alt="{{ certificate.image.url }}">
+{% endblock %}

@@ -7,7 +7,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from core.models import Topic
+from core.models import Topic, Sertificat
 from core.storage import counter
 
 
@@ -27,6 +27,20 @@ def index(request):
     num_visits = request.session.get('num_visits', 0)
     request.session['num_visits'] = num_visits + 1
     return render(request, "main_page/index.html", {"topics": topics,
-                                          "cou": cou,
-                                          'num_visits': num_visits
-                                          })
+                                                    "cou": cou,
+                                                    'num_visits': num_visits
+                                                    })
+
+
+def certificates(request):
+    certificates = Sertificat.objects.all()
+    return render(request, 'certificates.html', context={
+        "certificates": certificates
+    })
+
+
+def certificate(request, pk):
+    certificate = Sertificat.objects.get(pk=pk)
+    return render(request, 'certificate.html', context={
+        "certificate": certificate
+    })
