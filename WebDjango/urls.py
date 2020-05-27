@@ -13,12 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
-from database.views import postg, jsdb, delete, add, edit, inbase, mpro1, mpro2, mpro3, mpro4, mpro5
+from core.univer_views import postg, jsdb, delete, add, edit, inbase, mpro1, mpro2, mpro3, mpro4, mpro5
 
-from univer.views import topic_details, index
+from core.views import topic_details, index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,7 +33,7 @@ urlpatterns = [
     path('mpro3/', mpro3),
     path('mpro4/', mpro4),
     path('mpro5/', mpro5),
-    url(r'^topic/(?P<pk>\d+)/$', topic_details, name="topic_details"),
+    path('topic/<pk>', topic_details, name="topic_details"),
 ]
 
 # Add Django site authentication urls (for login, logout, password management)

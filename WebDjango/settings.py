@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'alexeyd.herokuapp.com']
 
 SESSION_SAVE_EVERY_REQUEST = True
 
@@ -40,9 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'univer',
-    'channels',
-    'database',
+    'core',
     'crispy_forms',
 ]
 
@@ -50,6 +48,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -121,25 +120,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
-
 ASGI_APPLICATION = "WebDjango.routing.application"
 
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [os.environ.get('REDIS_URL', 'redis://h:p6272540077e0c17841dccd138494d0331773827568eb3cbcf1d7d4f74a1d32de@ec2-3-223-43-102.compute-1.amazonaws.com:14829')],
+            "hosts": [config('REDIS_URL')],
         },
     },
 }
-REDIS_URL = os.getenv("REDIS_URL", "redis://h:p6272540077e0c17841dccd138494d0331773827568eb3cbcf1d7d4f74a1d32de@ec2-3-223-43-102.compute-1.amazonaws.com:14829")
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+REDIS_URL = config("REDIS_URL")
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-django_heroku.settings(locals())
+STATIC_URL = '/staticfiles/'
 
 LOGIN_REDIRECT_URL = '/'
 

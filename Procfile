@@ -1,1 +1,1 @@
-web: daphne WebDjango.asgi:application --port $PORT --bind 0.0.0.0
+web: gunicorn WebDjango.wsgi --log-file -
