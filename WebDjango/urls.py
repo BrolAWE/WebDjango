@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from core.univer_views import postg, jsdb, delete, add, edit, inbase, mpro1, mpro2, mpro3, mpro4, mpro5
+from core.univer_views import *
 
-from core.views import topic_details, index, certificate, certificates
+from core.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,6 +36,7 @@ urlpatterns = [
     path('mpro4/', mpro4),
     path('mpro5/', mpro5),
     path('topic/<pk>', topic_details, name="topic_details"),
+    path('research/', research, name='research'),
 ]
 
 # Add Django site authentication urls (for login, logout, password management)

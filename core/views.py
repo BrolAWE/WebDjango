@@ -44,3 +44,7 @@ def certificate(request, pk):
     return render(request, 'certificate.html', context={
         "certificate": certificate
     })
+
+
+def research(request):
+    return render(request, 'research.html')
