@@ -1,10 +1,10 @@
-from django.test import TestCase, Client
+from django.test import TestCase
 
 
-class ViewTest(TestCase):
+class HomePageTest(TestCase):
+    """Тест домашней страницы"""
 
-    def testView(self):
-        """Тест главной станицы"""
-        c = Client()
-        response = c.get('/')
-        self.assertEqual(response.status_code, 200)
+    def test_uses_home_template(self):
+        """Используется шаблон домашней страницы"""
+        response = self.client.get('/')
+        self.assertTemplateUsed(response, 'index.html')

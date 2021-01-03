@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import sys
+
 import django_heroku
 from decouple import config
 import dj_database_url
@@ -83,10 +85,25 @@ WSGI_APPLICATION = 'WebDjango.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )}
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'test_db',
+            'USER': 'postgres',
+            'PASSWORD': '2134',
+            'HOST': 'localhost',
+            'PORT': 5432,
+            'TEST': {
+                'NAME': 'test_db',  # This is an important entry
+            }
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=config('DATABASE_URL')
+        )}
 
 CLOUDINARY = {
     'cloud_name': config('CLOUDINARY_CLOUD_NAME'),
