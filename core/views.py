@@ -1,8 +1,4 @@
-from django.http import HttpResponse, JsonResponse, Http404
-from django.shortcuts import render, render_to_response
-
-from django.db.models import Q, Max, Min
-from django.http import JsonResponse, Http404, HttpResponse, HttpResponseNotFound
+from django.http import Http404
 from django.shortcuts import render
 
 # Create your views here.

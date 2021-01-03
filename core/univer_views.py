@@ -1,8 +1,5 @@
-from django.http import HttpResponse, JsonResponse, Http404
-from django.shortcuts import render, render_to_response
-
 from django.db.models import Q, Max, Min
-from django.http import JsonResponse, Http404, HttpResponse, HttpResponseNotFound
+from django.http import JsonResponse, Http404, HttpResponse
 from django.shortcuts import render
 
 from core.models import Dostopr
