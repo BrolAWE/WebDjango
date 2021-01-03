@@ -6,11 +6,13 @@ from univer.models import Dostopr
 
 
 def postg(request):
+    """Представление базы данных"""
     b = Dostopr.objects.all()
     return render(request, "db.html", {"b": b})
 
 
 def jsdb(request):
+    """Представление поиска по базе данных"""
     first = request.GET.get("first", "")
     second = request.GET.get("second", "")
     firstsearch = request.GET.get("firstsearch", "")
@@ -75,6 +77,7 @@ def delete(request):
 
 
 def add(request):
+    """Представление добаления в базу данных"""
     name = request.GET.get("name", "")
     longitude = request.GET.get("longitude", "")
     latitude = request.GET.get("latitude", "")
@@ -85,6 +88,7 @@ def add(request):
 
 
 def edit(request):
+    """Представление изменения элемента базы данных"""
     try:
         pk = request.GET.get("id", "")
         dostopr = Dostopr.objects.get(pk=pk)
@@ -100,6 +104,7 @@ def edit(request):
 
 
 def inbase(request):
+    """Представление проверки элемента в базе данных"""
     try:
         pk = int(request.GET.get("pk", ""))
         Dostopr.objects.get(pk=pk)
@@ -109,6 +114,7 @@ def inbase(request):
 
 
 def mpro1(request):
+    """Представление решения первого задания"""
     a = [float(i) for i in request.GET.get("a", "").split()]
     b = [float(i) for i in request.GET.get("b", "").split()]
     if a[0] > a[1] or len(a) != 2 or b[0] > b[1] or len(b) != 2:
@@ -122,6 +128,7 @@ def mpro1(request):
 
 
 def mpro2(request):
+    """Представление решения второго задания"""
     f = []
     c = True
     a = int(request.GET.get("a", ""))
@@ -143,6 +150,7 @@ def mpro2(request):
 
 
 def mpro3(request):
+    """Представление решения третьего задания"""
     import math
     f = []
     z = []
@@ -159,6 +167,7 @@ def mpro3(request):
 
 
 def mpro4(request):
+    """Представление решения четвёртого задания"""
     import random
     L = []
     S = 0
@@ -176,6 +185,7 @@ def mpro4(request):
 
 
 def mpro5(request):
+    """Представление решения пятого задания"""
     S = []
     a = int(request.GET.get("a", ""))
     if a <= 0 or a > 10:
