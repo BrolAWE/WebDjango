@@ -7,10 +7,21 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-4 topic-list">
-                {% include "topic-list.html" %}
+                <div class="topic-list">
+                    {% for topic in topics %}
+                        <div class="topic-list__item">
+                            <h5><a href="{% url "topic_details" topic.pk %}">{{ topic.title }}</a></h5>
+                            <p>{{ topic.body }}</p>
+                            <a href="{% url "topic_details" topic.pk %}" class="btn btn-outline-primary">More...</a>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
             <div class="col-4 main">
-                {% include "main.html" %}
+                {% load static %}
+                <p>{{ cou }} views</p>
+                <p>You have visited this page
+                    {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
             </div>
             <div class="col-4">
             </div>
