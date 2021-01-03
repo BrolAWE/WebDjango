@@ -15,28 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from core.univer_views import *
 
-from core.views import *
+from core.views import index
+
+from core import urls as core_urls
+
+from univer import urls as univer_urls
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('certificates/', certificates, name='certificates'),
-    path('certificate/<pk>', certificate, name='certificate'),
-    path('db/', postg, name='database'),
-    path('jsdb/', jsdb),
-    path('add/', add),
-    path('delete/', delete),
-    path('edit/', edit),
-    path('inbase/', inbase),
-    path('mpro1/', mpro1),
-    path('mpro2/', mpro2),
-    path('mpro3/', mpro3),
-    path('mpro4/', mpro4),
-    path('mpro5/', mpro5),
-    path('topic/<pk>', topic_details, name="topic_details"),
-    path('research/', research, name='research'),
+    path('admin/', admin.site.urls),
+    path('core/', include(core_urls)),
+    path('univer/', include(univer_urls)),
 ]
 
 # Add Django site authentication urls (for login, logout, password management)

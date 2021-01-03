@@ -9,14 +9,5 @@ class Topic(models.Model):
     body = models.TextField()
 
 
-class Dostopr(models.Model):
-    name = models.CharField(max_length=100)
-    longitude = models.FloatField()
-    latitude = models.FloatField()
-    rate = models.FloatField()
-    photo = models.CharField(max_length=100)
-    url = models.CharField(max_length=200, default="null")
-
-
 class Sertificat(models.Model):
     image = cloudinary.models.CloudinaryField('Сертификат')
