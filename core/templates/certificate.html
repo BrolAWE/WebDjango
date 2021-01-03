@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Sertificats{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <img src="{{ certificate.image.url }}" class="img-fluid" alt="{{ certificate.image.url }}">
+    </div>
+{% endblock %}

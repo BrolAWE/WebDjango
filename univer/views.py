@@ -7,7 +7,7 @@ from univer.models import Dostopr
 
 def postg(request):
     b = Dostopr.objects.all()
-    return render(request, "univer/db.html", {"b": b})
+    return render(request, "db.html", {"b": b})
 
 
 def jsdb(request):

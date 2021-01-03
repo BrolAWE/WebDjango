@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Research{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4">
+                <div class="row justify-content-center d-flex flex-wrap">
+                    <input id="valR" type="range" min="0" max="100" value="0" step="10" oninput="showKNN(this.value)"
+                           onchange="showKNN(this.value)"/>
+                    <span id="rangeKNN">0</span>
+                </div>
+                <div class="row justify-content-center d-flex flex-wrap">
+                    <img src="{% static "img/knn/knn_0.png" %}" alt="{% static "img/knn/knn_0.png" %}" id="imgKNN"
+                         class="img-fluid">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row justify-content-center d-flex flex-wrap">
+                    <input id="valR" type="range" min="0" max="100" value="0" step="10" oninput="showBayes(this.value)"
+                           onchange="showBayes(this.value)"/>
+                    <span id="rangeBayes">0</span>
+                </div>
+                <div class="row justify-content-center d-flex flex-wrap">
+                    <img src="{% static "img/bayes/bayes_0.png" %}" alt="{% static "img/bayes/bayes_0.png" %}"
+                         id="imgBayes"
+                         class="img-fluid">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row justify-content-center d-flex flex-wrap">
+                    <input id="valR" type="range" min="0" max="100" value="0" step="10" oninput="showForest(this.value)"
+                           onchange="showForest(this.value)"/>
+                    <span id="rangeForest">0</span>
+                </div>
+                <div class="row justify-content-center d-flex flex-wrap">
+                    <img src="{% static "img/forest/forest_10.png" %}" alt="{% static "img/forest/forest_10.png" %}"
+                         id="imgForest"
+                         class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showKNN(newVal) {
+            document.getElementById("rangeKNN").innerHTML = newVal;
+            if (newVal === 0)
+                document.getElementById("imgKNN").src = "{% static "img/knn/knn_0.png" %}";
+            else if (newVal > 0 && newVal < 10)
+                document.getElementById("imgKNN").src = "{% static "img/knn/knn_10.png" %}";
+            else if (newVal >= 10 && newVal < 20)
+                document.getElementById("imgKNN").src = "{% static "img/knn/knn_20.png" %}";
+            else if (newVal >= 30 && newVal < 40)
+                document.getElementById("imgKNN").src = "{% static "img/knn/knn_30.png" %}";
+            else if (newVal >= 40 && newVal < 50)
+                document.getElementById("imgKNN").src = "{% static "img/knn/knn_40.png" %}";
+            else if (newVal >= 50 && newVal < 60)
+                document.getElementById("imgKNN").src = "{% static "img/knn/knn_50.png" %}";
+            else if (newVal >= 60 && newVal < 70)
+                document.getElementById("imgKNN").src = "{% static "img/knn/knn_60.png" %}";
+            else if (newVal >= 70 && newVal < 80)
+                document.getElementById("imgKNN").src = "{% static "img/knn/knn_70.png" %}";
+            else if (newVal >= 80 && newVal < 90)
+                document.getElementById("imgKNN").src = "{% static "img/knn/knn_80.png" %}";
+            else if (newVal >= 90 && newVal < 100)
+                document.getElementById("imgKNN").src = "{% static "img/knn/knn_90.png" %}";
+            else if (newVal === 100)
+                document.getElementById("imgKNN").src = "{% static "img/knn/knn_100.png" %}";
+        }
+
+        function showBayes(newVal) {
+            document.getElementById("rangeBayes").innerHTML = newVal;
+            if (newVal === 0)
+                document.getElementById("imgBayes").src = "{% static "img/bayes/bayes_10.png" %}";
+            else if (newVal > 0 && newVal < 10)
+                document.getElementById("imgBayes").src = "{% static "img/bayes/bayes_10.png" %}";
+            else if (newVal >= 10 && newVal < 20)
+                document.getElementById("imgBayes").src = "{% static "img/bayes/bayes_20.png" %}";
+            else if (newVal >= 30 && newVal < 40)
+                document.getElementById("imgBayes").src = "{% static "img/bayes/bayes_30.png" %}";
+            else if (newVal >= 40 && newVal < 50)
+                document.getElementById("imgBayes").src = "{% static "img/bayes/bayes_40.png" %}";
+            else if (newVal >= 50 && newVal < 60)
+                document.getElementById("imgBayes").src = "{% static "img/bayes/bayes_50.png" %}";
+            else if (newVal >= 60 && newVal < 70)
+                document.getElementById("imgBayes").src = "{% static "img/bayes/bayes_60.png" %}";
+            else if (newVal >= 70 && newVal < 80)
+                document.getElementById("imgBayes").src = "{% static "img/bayes/bayes_70.png" %}";
+            else if (newVal >= 80 && newVal < 90)
+                document.getElementById("imgBayes").src = "{% static "img/bayes/bayes_80.png" %}";
+            else if (newVal >= 90 && newVal < 100)
+                document.getElementById("imgBayes").src = "{% static "img/bayes/bayes_90.png" %}";
+            else if (newVal === 100)
+                document.getElementById("imgBayes").src = "{% static "img/bayes/bayes_100.png" %}";
+        }
+
+        function showForest(newVal) {
+            document.getElementById("rangeForest").innerHTML = newVal;
+            if (newVal === 0)
+                document.getElementById("imgForest").src = "{% static "img/forest/forest_0.png" %}";
+            else if (newVal > 0 && newVal < 10)
+                document.getElementById("imgForest").src = "{% static "img/forest/forest_10.png" %}";
+            else if (newVal >= 10 && newVal < 20)
+                document.getElementById("imgForest").src = "{% static "img/forest/forest_20.png" %}";
+            else if (newVal >= 30 && newVal < 40)
+                document.getElementById("imgForest").src = "{% static "img/forest/forest_30.png" %}";
+            else if (newVal >= 40 && newVal < 50)
+                document.getElementById("imgForest").src = "{% static "img/forest/forest_40.png" %}";
+            else if (newVal >= 50 && newVal < 60)
+                document.getElementById("imgForest").src = "{% static "img/forest/forest_50.png" %}";
+            else if (newVal >= 60 && newVal < 70)
+                document.getElementById("imgForest").src = "{% static "img/forest/forest_60.png" %}";
+            else if (newVal >= 70 && newVal < 80)
+                document.getElementById("imgForest").src = "{% static "img/forest/forest_70.png" %}";
+            else if (newVal >= 80 && newVal < 90)
+                document.getElementById("imgForest").src = "{% static "img/forest/forest_80.png" %}";
+            else if (newVal >= 90 && newVal < 100)
+                document.getElementById("imgForest").src = "{% static "img/forest/forest_90.png" %}";
+            else if (newVal === 100)
+                document.getElementById("imgForest").src = "{% static "img/forest/forest_100.png" %}";
+        }
+    </script>
+
+{% endblock %}

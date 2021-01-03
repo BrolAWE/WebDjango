@@ -4,6 +4,7 @@ from WebDjango import settings
 
 
 class Counter:
+    """Счётчик посетителей"""
     redis = None
     key = 'counter_key'
 
