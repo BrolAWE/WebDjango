@@ -18,5 +18,5 @@ requests==2.25.1
 six==1.15.0
 smtp==0.1.0
 sqlparse==0.4.1
-urllib3==1.26.2
+urllib3==1.26.4
 whitenoise==5.2.0
